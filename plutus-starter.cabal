@@ -57,6 +57,7 @@ library
       plutus-tx -any,
       plutus-tx-plugin -any,
       plutus-script-utils -any,
+      plutus-chain-index-core -any,
       text -any,
       lens -any,
     hs-source-dirs: src examples/src

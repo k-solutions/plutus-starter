@@ -1,51 +1,7 @@
 -- Bump this if you need newer packages.
--- index-state: 2022-04-06T00:00:00Z 
+index-state: 2022-05-18T00:00:00Z
 
-packages: ./.
-
--- You never, ever, want this.
-write-ghc-environment-files: never
-
--- Always build tests and benchmarks.
-tests: true
-benchmarks: true
-
--- Plutus apps revision from 2022-04-06
-source-repository-package
-  type: git
-  location: https://github.com/input-output-hk/plutus-apps.git
-  tag: 172873e87789d8aac623e014eff9a39364c719ae
-  --sha256: 0craxjmyrv1wch5l9d1s4s4sgv1i9s6npiz0j7n585virnkcmz4k
-  subdir:
-          cardano-streaming
-          doc
-          freer-extras
-          marconi
-          marconi-mamba
-          playground-common
-          pab-blockfrost
-          plutus-chain-index
-          plutus-chain-index-core
-          plutus-contract
-          plutus-contract-certification
-          plutus-example
-          plutus-ledger
-          plutus-ledger-constraints
-          plutus-pab
-          plutus-pab-executables
-          plutus-playground-server
-          plutus-script-utils
-          plutus-tx-constraints
-          plutus-use-cases
-          rewindable-index
-          web-ghc
-
-
--- The following sections are copied from the 'plutus-apps' repository cabal.project at the revision
--- given above.
--- This is necessary because the  'plutus-apps' libraries depend on a number of other libraries which are
--- not on Hackage, and so need to be pulled in as `source-repository-package`s themselves. Make sure to
--- re-update this section from the template when you do an upgrade.
+packages: plutus-scripts.cabal
 
 -- We never, ever, want this.
 write-ghc-environment-files: never
@@ -55,9 +11,7 @@ tests: true
 benchmarks: true
 
 -- The only sensible test display option.
-test-show-details: direct
-
-
+test-show-details: streaming
 
 -- cardano-addresses unit tests bring in some version constraint conflicts:
 --
@@ -108,6 +62,31 @@ package cardano-wallet-launcher
   optimization: False
 package cardano-wallet-core-integration
   optimization: False
+
+source-repository-package
+  type: git
+  location: https://github.com/input-output-hk/plutus-apps.git
+  tag: 87b647b05902a7cef37340fda9acb175f962f354
+  subdir:
+    doc
+    freer-extras
+    playground-common
+    plutus-chain-index
+    plutus-chain-index-core
+    plutus-contract
+    plutus-example
+    plutus-contract-certification
+    plutus-ledger
+    plutus-ledger-constraints
+    plutus-pab
+    plutus-pab-executables
+    plutus-playground-server
+    plutus-script-utils
+    plutus-tx-constraints
+    plutus-use-cases
+    plutus-streaming
+    rewindable-index
+    web-ghc
 
 -- Direct dependency.
 -- Compared to others, cardano-wallet doesn't bump dependencies very often.
@@ -160,14 +139,12 @@ source-repository-package
     type: git
     location: https://github.com/sevanspowell/hw-aeson
     tag: b5ef03a7d7443fcd6217ed88c335f0c411a05408
-    --sha256: 1dwx90wqavdl4d0npbzbxyh2pzi9zs1qz7nvsrb3n1cm2xbv4i5z
 
 -- Using a fork until our patches can be merged upstream
 source-repository-package
   type: git
   location: https://github.com/input-output-hk/optparse-applicative
   tag: 7497a29cb998721a9068d5725d49461f2bba0e7a
-  --sha256: 1gvsrg925vynwgqwplgjmp53vj953qyh3wbdf34pw21c8r47w35r
 
 -- Should follow cardano-wallet.
 source-repository-package
@@ -342,7 +319,6 @@ source-repository-package
   type: git
   location: https://github.com/input-output-hk/io-sim
   tag: 57e888b1894829056cb00b7b5785fdf6a74c3271
-  --sha256: 1kv8lwmrw1c0g03jy3i3fgk3c8d47ihjcslg295djqj442y95y2f
   subdir:
     io-classes
     io-sim
@@ -353,7 +329,6 @@ source-repository-package
   type: git
   location: https://github.com/input-output-hk/typed-protocols
   tag: 181601bc3d9e9d21a671ce01e0b481348b3ca104
-  --sha256: 1lr97b2z7l0rpsmmz92rsv27qzd5vavz10cf7n25svya4kkiysp5
   subdir:
     typed-protocols
     typed-protocols-cborg
@@ -373,11 +348,9 @@ source-repository-package
   type: git
   location: https://github.com/vshabanov/ekg-json
   tag: 00ebe7211c981686e65730b7144fbf5350462608
-  --sha256: 1zvjm3pb38w0ijig5wk5mdkzcszpmlp5d4zxvks2jk1rkypi8gsm
 
 -- Should follow cardano-wallet
 source-repository-package
   type: git
   location: https://github.com/input-output-hk/hedgehog-extras
   tag: 714ee03a5a786a05fc57ac5d2f1c2edce4660d85
-  --sha256: 1qa4mm36xynaf17990ijmzww0ij8hjrc0vw5nas6d0zx6q9hb978
